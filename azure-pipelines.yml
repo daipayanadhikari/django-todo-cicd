@@ -1,5 +1,15 @@
 # Docker
 # Build a Docker image
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    - task: Ant@1
+      inputs:
+        buildFile: 'build.xml'
+        options: 
+        publishJUnitResults: true
+        testResultsFiles: '**/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
